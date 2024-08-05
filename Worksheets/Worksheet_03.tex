@@ -1,0 +1,41 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#3}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Consider the space of polynomials of degree $\le 3$ with inner product $\langle p,q\rangle = \int_{-1}^1p(x)q(x)\mathrm{d}x.$ Apply Gram-Schmidt to the monomial basis to obtain an orthogonal basis for the space. The resulting polynomials are called Legendre polynomials.
+\item Consider the space $V$ of functions $f$ that are continuous on $[-\pi,\pi]$, with subspace $W$ spanned by
+\[\cos(nx),n=0,\ldots,N;\sin(nx),n=1,\ldots,N.\]
+Find an expression for the orthogonal projection of a function $f\in V$ onto $W$.
+\item Let $\mathbf{A}$ be a real skew-symmetric matrix. Without referring to eigenvalues, prove that
+\[\mathbf{Q} = (\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1}\]
+is
+	\begin{itemize}
+	\item[(a)] Well-defined (i.e.\ the inverse exists), and
+	\item[(b)] An orthogonal matrix.
+	\end{itemize}
+%\item Suppose that you have a vector $\vec{v}$ in a finite-dimensional inner product space $V$ with subspace $W$. Prove that the orthogonal projection $\vec{w}$ of $\vec{v}$ onto $W$ is also the closest point in $W$ to $\vec{v}$, where distance is measured using the norm induced by the inner product.
+\end{enumerate}
+ 
+
+\end{document}

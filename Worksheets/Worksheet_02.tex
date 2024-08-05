@@ -1,0 +1,47 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#2}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Let $\vec{x}$ and $\vec{y}$ be vectors in an inner product space and let $\|\cdot\|$ be derived from the inner product. Prove that $\vec{x}\perp\vec{y}$ if and only if $\|\vec{y}\|\le\|\vec{y}+t\vec{x}\|$ for all scalars $t\in\mathbb{R}$.
+\item Prove that $\langle\mathbf{A},\mathbf{B}\rangle=$ Tr$\left(\mathbf{AB}^T\right)$ is an inner product on the space of real $m\times n$ matrices. (Note that this implies that $(\langle\mathbf{A},\mathbf{A}\rangle)^{1/2}$ defines a norm on real $m\times n$ matrices; this norm is called the Frobenius norm. It is not an operator norm. It is not the matrix 2-norm.)
+\item Suppose that you have a norm $\|\cdot\|$ on a real vector space but you don't know if it comes from an inner product.
+Prove that if the norm does come from an inner product, then the inner product must be
+	\[\langle\vec{x},\vec{y}\rangle = \frac{1}{4}\left(\|\vec{x}+\vec{y}\|^2-\|\vec{x}-\vec{y}\|^2\right).\] This is called a polarization identity. If the norm does not come from an inner product, which of the three properties of an inner product will it fail to satisfy?
+\item Consider the vector space of polynomials of degree $\le n$ and the inner product $\langle p,q\rangle = \int_0^1 p(x)q(x)\mathrm{d}x$. Find an expression for the Gram matrix associated with the monomial basis for this space. This matrix is called the Hilbert matrix. Explain why it is positive definite.
+\item Let $\mathbf{K}$ be symmetric and positive definite and assume it has the factorization $\mathbf{LDL}^T$ from the notes. Prove that the diagonal elements of $\mathbf{D}$ must be positive.
+\item Every square matrix $\mathbf{A}$ can be uniquely decomposed into a sum of a symmetric and an antisymmetric matrix:
+\[\mathbf{A} = \frac{\mathbf{A}+\mathbf{A}^T}{2} + \frac{\mathbf{A} - \mathbf{A}^T}{2}.\]
+Show that if $\mathbf{J}$ is real and antisymmetric, then $\vec{x}^T\mathbf{J}\vec{x} = 0$ for every $\vec{x}\in\mathbb{R}^n$.
+\item Riesz representation theorem:
+	\begin{itemize}
+	\item[(a)] Consider the linear functional $L[x\vec{e}_1+y\vec{e}_2+z\vec{e}_3] = y$ and the inner product defined by
+	\[\langle\vec{x},\vec{y}\rangle = \vec{x}^T\mathbf{K}\vec{y}\text{ where }\mathbf{K} = \left[\begin{array}{ccc}2&1&\\1&2&1\\&1&2\end{array}\right].\]
+	Find the vector $\vec{z}\in\mathbb{R}^3$ such that $L[\vec{x}] = \langle\vec{x},\vec{z}\rangle$ for all $\vec{x}$. (Use {\tt numpy} or Mathematica if you don't want to solve by hand.)
+	\item[(b)] Consider the linear functional $L[p] = \int_0^1 e^{-x}p(x)\mathrm{d}x$ defined on polynomials of degree $\le 2$ and using the inner product $\langle p,q\rangle = \int_0^1p(x)q(x)\mathrm{d}x.$ Find the polynomial $r(x)$ of degree $\le 2$ such that $L[p] = \langle p,r\rangle$ for every polynomial $p$ of degree $\le 2$.  (Use Mathematica or similar to speed up the analysis.)
+	\end{itemize}
+\item Consider the linear function $L[f](x) = \mathrm{d}[xf'(x)]/\mathrm{d}x$ acting on polynomials of degree $\le 2$, and the inner product $\langle p,q\rangle = \int_0^1 x p(x) q(x)\mathrm{d}x$. What is the adjoint of $L$ with respect to this inner product? Hint: Express your solution as a map from monomial coefficients to monomial coefficients, and use Mathematica or numpy to aid the computation.
+\end{enumerate}
+ 
+
+\end{document}

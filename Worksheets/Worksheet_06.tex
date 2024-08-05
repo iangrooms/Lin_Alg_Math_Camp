@@ -1,0 +1,56 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#6}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Suppose that $\mathbf{A}$ is not diagonalizable. Construct a matrix $\mathbf{E}$ such that for sufficiently small $\epsilon>0$ the matrix $\mathbf{A} + \epsilon\mathbf{E}$ is diagonalizable.
+\item Prove that if $\mat{A}$ is skew symmetric, then $e^{\mat{A}}$ is orthogonal.
+\item 
+\begin{itemize}
+	\item[(a)] Consider the linear, autonomous system of ODEs
+\[\frac{\mathrm{d}\vec{x}}{\mathrm{d}t} = \mathbf{A}\vec{x},\;\vec{x}(t=0) = \vec{b}.\] 
+	Write an explicit expression for a matrix $\mathbf{L}(t)$ such that
+\[\vec{x}(t) = \mathbf{L}(t)\vec{b}.\]
+	\item[(b)] Consider the problem of finding a direction for the vector $\vec{b}$ that will lead to the largest $\vec{x}$ (amplitude measured using the 2-norm) at a fixed time $T$. Explain how to find both the forcing vector $\vec{b}$ and the solution vector $\vec{x}$ using the SVD of $\mathbf{L}$.
+	\item[(c)] Suppose that $\mathbf{A}$ is symmetric. How is the optimal vector $\vec{b}$ from (b) related to the eigenvectors of $\mathbf{A}$?
+%	\item[(d)] Consider the linear, autonomous system of ODEs
+%\[\frac{\mathrm{d}\vec{x}}{\mathrm{d}t} = \mathbf{A}\vec{x}+\vec{b},\;\vec{x}(t=0) = \vec{0}.\] 
+%	Write an explicit expression for a matrix $\mathbf{M}(t)$ such that
+%\[\vec{x}(t) = \mathbf{M}\vec{b}.\]
+%	\item[(e)] Suppose that $\mathbf{A}$ is normal. How is the optimal vector $\vec{b}$ from (d) related to the eigenvectors of $\mathbf{A}$?
+\end{itemize}
+\item Prove the following: If $\|\mat{F}\|<1$ where $\|\cdot\|$ is an operator norm, then 
+\[(\mat{I}-\mat{F})^{-1} - \mat{I} = \mat{F}(\mat{I}-\mat{F})^{-1}.\]
+\item Consider the matrix $\vec{u}\vec{v}^T$ where $\vec{u}$ and $\vec{v}$ are unit vectors and $\vec{u}\cdot\vec{v}\neq0$.
+	\begin{itemize}
+	\item[(a)] What are the eigenvalues and eigenvectors of this matrix?
+	\item[(b)] Is the matrix diagonalizable?
+	\item[(c)] Find an explicit expression for a matrix $\mathbf{X}$ such that $\mathbf{X}^2 = \mathbf{I} + \vec{u}\vec{v}^T$.
+	\item[(d)] Find an explicit expression for $(\mathbf{I} + \vec{u}\vec{v}^T)^{-1}$ assuming that $\vec{u}\cdot\vec{v}\neq -1$.
+	\end{itemize}
+
+\item Prove the following: the iteration defined by $\vec{x}_{k+1}=\mat{B}\vec{x}_k$, where $\mat{B}\in\mathbb{R}^{n\times n}$ and $\vec{x}_k\in\mathbb{R}^n$,  converges to $\vec{0}$ for every initial condition $\vec{x}_0$ if and only if $\rho(\mat{B})<1$ where $\rho(\mat{B})$ is the spectral radius of $\mat{B}$.
+\end{enumerate}
+ 
+
+\end{document}

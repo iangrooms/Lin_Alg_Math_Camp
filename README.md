@@ -1,0 +1,93 @@
+# Linear Algebra Math Camp
+
+This repository contains materials developed by Ian Grooms for the math camp in Linear Algebra & Computing at CU-Boulder's Department of Applied Mathematics for incoming PhD students.
+The material is drawn in part from the second edition of Applied Linear Algebra by Olver & Shakiban.
+Other useful references include Matrix Analysis and Applied Linear Algebra by Carl Meyer, and Matrix Analysis by Horn & Johnson.
+
+## Notebooks
+- Lecture 1:
+	- Vectors, Matrices, Numpy
+	- Matrix multiplication, dot product, outer product
+	- Transposition
+	- Special matrices: Identity, triangular
+	- Vector spaces & subspaces
+	- Span, linear independence, basis, dimension, coordinates
+- Lecture 2:
+	- Matrix representation of linear functions
+	- Linear functionals and the dual space
+	- Linear systems of equations
+	- Inverse matrices
+	- Gaussian elimination, Row Echelon Form, and LU factorization
+	- Block matrix multiplication
+	- Superposition
+	- The four fundamental subspaces (range, corange, kernel, cokernel)
+- Lecture 3:
+	- Vector norms
+	- Equivalence of norms
+	- Matrix norms
+	- Inner products
+	- Symmetric and positive definite (SPD) matrices
+	- Gram matrices
+	- Cholesky factorization
+	- Adjoints
+	- Riesz representation theorem (easy version on finite-dimensional spaces)
+- Lecture 4:
+	- Cauchy Schwarz
+	- Angle between vectors
+	- Orthogonal matrices
+	- Orthogonal subspaces
+	- Orthogonal projections
+	- Gram-Schmidt
+- Lecture 5:
+	- Derivatives (directional, gradient, Jacobian, Hessian)
+	- Linear least squares (including weighted)
+	- Closest point & orthogonal projection
+	- Lagrange multipliers
+- Lecture 6:
+	- Eigenvalues & eigenvectors
+	- Diagonalizable matrices
+	- Spectral theorem for normal matrices
+	- Eigenvalues and SPD matrices
+	- Singular value decomposition and the matrix 2-norm
+	- Pseudoinverse and least-squares
+	- Eckart-Young
+	- Normal matrices and diagonalizability
+- Lecture 7:
+	- Jordan form
+	- Functions of matrices
+	- Spectral radius
+
+## Worksheets
+- Worksheet 1: Lectures 1 & 2
+	- Matrix algebra
+	- Matrix representation of linear functions
+	- Linear systems of ODEs
+	- Rank
+	- Sherman-Morrison
+	- Fundamental subspaces
+- Worksheet 2: Lecture 3
+	- Inner products & norms
+	- Gram matrices
+	- SPD matrices & Cholesky
+	- Riesz representation theorem
+	- Adjoint
+- Worksheet 3: Lecture 4
+	- Gram-Schmidt
+	- Orthogonal projection
+	- Orthogonal matrices
+- Worksheet 4: Lecture 5
+	- Derivatives
+	- Least-squares/closest point
+	- Lagrange multipliers for equality-constrained optimization
+- Worksheet 5: Lecture 6
+	- Simultaneous diagonalizability
+	- Eigenvalues of products
+	- Spectral decomposition
+	- Polar decomposition
+	- Diagonalizability & adjoints
+	- SVD & 2-norm
+- Worksheet 6: Lecture 7
+	- Diagonalizable matrices are dense
+	- Matrix exponential
+	- Functions of matrices
+	- Spectral radius

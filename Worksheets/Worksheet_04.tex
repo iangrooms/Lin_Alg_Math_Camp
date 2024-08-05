@@ -1,0 +1,47 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#4}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Find a symmetric matrix $\mathbf{H}$, vector $\vec{b}$, and constant c so that
+\[q(x_1,x_2,x_3) = 4x_1^2+4x_1x_2 + 2x_1x_3 + x_2^2+6x_2x_3 + 3x_3^2 -2x_1+x_2-x_3+5 = \frac{1}{2}\vec{x}^T\mathbf{H}\vec{x} + \vec{x}^T\vec{b} + c.\]
+\item Suppose that you have a finite-dimensional vector space $V$ whose elements are functions of $x$ (e.g. polynomials or trig functions), and you have a basis for that space $\vec{v}_1,\ldots,\vec{v}_m$. (These `vectors' are functions.) Assume that you have an inner product on $V$ $\langle\cdot,\cdot\rangle$. You have some function $f$ such that $\langle\vec{v}_i,f\rangle$ exists for all $i$. You want to find $\vec{v}\in V$ that minimizes $\|f-\vec{v}\|^2 = \langle f-\vec{v},f-\vec{v}\rangle$. Explain why a solution always exists and give a formula for the solution.
+\item Consider the problem of optimizing a quadratic function 
+
+$$q(\vec{x}) = \frac{1}{2}\vec{x}^T\mathbf{K}\vec{x} + \vec{x}^T\vec{b} + c $$
+
+subject to a linear equality constraint
+
+$$\vec{d}^T\vec{x} = e\;\text{ i.e. }\;g(\vec{x}) = \vec{d}^T\vec{x} - e = 0$$
+
+where we can assume that $\mathbf{K}$ is symmetric without loss of generality, and also assume $\vec{d}\neq\vec{0}$.
+
+	\begin{itemize}
+	\item[(a)] Apply the method of Lagrange multipliers and write the optimality condition as a linear system of equations for $\vec{x}$ and $\lambda$.
+	\item[(b)] The coefficient matrix in (a) should be symmetric. Explain why it cannot be positive definite even if $\mathbf{K}$ is positive definite.
+	\item[(c)] Assuming that $\mathbf{K}$ is positive definite, use block Gaussian elimination to find an explicit expression for the solution $\vec{x}$.
+	\end{itemize}
+\end{enumerate}
+ 
+
+\end{document}

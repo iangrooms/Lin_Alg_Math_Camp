@@ -1,0 +1,57 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#1}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Suppose that you are given $\mat{A}$, $\mat{B}$, and $\vec{x}$. Explain how to evaluate the expression $(\mathbf{A}+\mathbf{B}^{-1})^{-1}\vec{x}$ without computing the inverse of any matrices.
+\item Without using the Wronskian, prove that the following three functions are linearly independent
+\[p_1(x) = 1,\;p_2(x) = 1 - x,\;p_3(x) = 1 - x + x^2.\]
+\item Consider the vector spaces of polynomials $V$ of degree at most 2 and $W$ of degree at most 3. 
+	\begin{itemize}
+	\item[(a)] Find the matrix representation of the following linear function from $V$ to $W$
+	\[L[p] = 2x\frac{\mathrm{d}p}{\mathrm{d}x}\]
+	with the monomial basis for both spaces.
+	\item[(b)] Find the matrix representation of the same linear function with respect to the Chebyshev basis for both spaces: $1, x, 2x^2 - 1$, and for $W$ also $4x^3-3x$.
+	\end{itemize}
+\item Consider the function $L:\mathbb{R}^n\to\mathbb{R}^n$ that maps the initial condition to the final condition at time $t=\tau$ for a linear, non-autonomous, homogeneous system of differential equations:
+\[\frac{\mathrm{d}\vec{x}}{\mathrm{d}t} = \mathbf{A}(t)\vec{x},\;\;\vec{x}(0) = \vec{x}_0.\]
+	\begin{itemize}
+	\item[(a)] Prove that this function is linear.
+	\item[(b)] Infer from (a) that $\vec{x}(\tau) = \Pi(\tau)\vec{x}_0$ (no work required). Write down a system of ODEs that $\Pi(\tau)$ must solve (explain why).
+	\end{itemize}
+\item Let $\vec{0}\neq \vec{v}\in\mathbb{R}^m$ and $\vec{0}\neq\vec{w}\in\mathbb{R}^n$. Prove that the matrix $\vec{v}\vec{w}^T$ has rank one.
+\item Find the rank of this $n\times n$ matrix
+\[\mathbf{I} - \frac{1}{n}\mathbf{1}\]
+where $\mathbf{1}$ is a matrix whose every entry is 1.
+\item (Sherman-Morrison) Let $\mathbf{A}$ be an $n\times n$ invertible matrix and let $\vec{u},\vec{v}\in\mathbb{R}^n$. Without even {\it thinking} about using a determinant, prove
+	\begin{itemize}
+	\item[(a)] that $\mathbf{A}+\vec{u}\vec{v}^T$ is invertible iff $1+\vec{v}^T\mathbf{A}^{-1}\vec{u}\neq0$, and
+	\item[(b)] in that case
+	\[\left(\mathbf{A}+\vec{u}\vec{v}^T\right)^{-1} = \mat{A}^{-1} - \frac{1}{1+\vec{v}^T\mathbf{A}^{-1}\vec{u}}\mat{A}^{-1}\vec{u}\vec{v}^T\mat{A}^{-1}.\]
+	(Hint: Use the expression given in (b) to prove one direction in (a). To prove the other direction, consider the vector $\mathbf{A}^{-1}\vec{u}$.)
+	\end{itemize}
+\item Prove that if $\vec{v}_1,\ldots,\vec{v}_r$ are a basis for the corange of $\mathbf{A}$, then $\mathbf{A}\vec{v}_1,\ldots,\mathbf{A}\vec{v}_r$ are a basis for the range of $\mathbf{A}$.
+\end{enumerate}
+ 
+
+\end{document}
