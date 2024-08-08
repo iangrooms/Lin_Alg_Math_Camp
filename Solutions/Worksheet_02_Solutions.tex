@@ -1,0 +1,146 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#2: Solutions}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Let $\vec{x}$ and $\vec{y}$ be vectors in an inner product space and let $\|\cdot\|$ be derived from the inner product. Prove that $\vec{x}\perp\vec{y}$ if and only if $\|\vec{y}\|\le\|\vec{y}+t\vec{x}\|$ for all scalars $t\in\mathbb{R}$.
+
+{\bf Solution:} Consider the equivalent statement $\vec{x}\perp\vec{y}$ if and only if $\|\vec{y}\|\le\|\vec{y}+t\vec{x}\|$ for all scalars $t\in\mathbb{R}$.
+Expand
+\[\|\vec{y}+t\vec{x}\|^2 = \langle\vec{y}+t\vec{x},\vec{y}+t\vec{x}\rangle = \|\vec{y}\|^2 + 2t\langle\vec{y},\vec{x}\rangle + t^2\|\vec{x}\|^2.\]
+If $\vec{x}\perp\vec{y}$ then the implication is obvious.
+
+Now consider the minimum value of $\|\vec{y}+t\vec{x}\|^2$ as a function of $t$, which occurs at the critical point where the derivative with respect to $t$ is zero.
+The critical point occurs at the solution of
+\[2\langle\vec{y},\vec{x}\rangle + 2t\|\vec{x}\|^2=0\]
+i.e.
+\[t = -\frac{\langle\vec{y},\vec{x}\rangle}{\|\vec{x}\|^2}.\]
+The minimum value is obtained by plugging this value of $t$ back in, which yields
+\[\text{min}\|\vec{y} + t\vec{x}\|^2 = \|\vec{y}\|^2 - \frac{(\langle\vec{y},\vec{x}\rangle)^2}{\|\vec{x}\|^2}.\]
+The only way that this minimum value can be equal to $\|\vec{y}\|^2$ is if $\vec{x}\perp\vec{y}$.
+
+\item Prove that $\langle\mathbf{A},\mathbf{B}\rangle=$ Tr$\left(\mathbf{AB}^T\right)$ is an inner product on the space of real $m\times n$ matrices. (Note that this implies that $(\langle\mathbf{A},\mathbf{A}\rangle)^{1/2}$ defines a norm on real $m\times n$ matrices; this norm is called the Frobenius norm. It is not an operator norm. It is not the matrix 2-norm.)
+
+{\bf Solution:} Using the definition of the trace and the definition of matrix multiplication we have
+
+\[\text{Tr}(\mathbf{AB}^T) = \sum_i\sum_ka_{ik}b_{ik}.\]
+I.e. we multiply the elements of the matrices and sum them up.
+This is the same as the dot product, so it satisfies the same properties.
+If you want to check each property by hand:
+\begin{itemize}
+\item Positivity: Tr$(\mathbf{AA}^T) = \sum_i\sum_ka_{ik}^2$. This is non-negative and the only way to get 0 is for all the entries of {\bf A} to be zero.
+\item Symmetry: Taking the transpose of a matrix does not change the diagonal elements, so it does not change the trace of the matrix. Therefore
+\[\langle\mathbf{A},\mathbf{B}\rangle = \text{Tr}(\mathbf{AB}^T) = \text{Tr}((\mathbf{AB}^T)^T)=\text{Tr}(\mathbf{BA}^T) = \langle\mathbf{B},\mathbf{A}\rangle.\]
+\item Bilinearity:
+\[\langle\alpha\mathbf{A}+\beta\mathbf{B},\mathbf{C}\rangle = \text{Tr}(\mathbf{(\alpha\mathbf{A}+\beta\mathbf{B})\mathbf{C}}^T) = \text{Tr}((\mathbf{AB}^T)^T)=\text{Tr}(\alpha\mathbf{AC}^T + \beta\mathbf{BC}^T)\]\[ = \alpha\text{Tr}(\mathbf{AC}^T)+  \beta\text{Tr}(\mathbf{BC}^T)=\alpha\langle\mathbf{A},\mathbf{C}\rangle+\beta\langle\mathbf{B},\mathbf{C}\rangle\]
+\end{itemize}
+
+\item Suppose that you have a norm $\|\cdot\|$ on a real vector space but you don't know if it comes from an inner product.
+Prove that if the norm does come from an inner product, then the inner product must be
+	\[\langle\vec{x},\vec{y}\rangle = \frac{1}{4}\left(\|\vec{x}+\vec{y}\|^2-\|\vec{x}-\vec{y}\|^2\right).\] This is called a polarization identity. If the norm does not come from an inner product, which of the three properties of an inner product will it fail to satisfy?
+	
+{\bf Solution:}
+\begin{eqnarray*}
+\|\vec{x}+\vec{y}\|^2 = \langle\vec{x}+\vec{y},\vec{x}+\vec{y}\rangle = \langle\vec{x},\vec{x}\rangle + \langle\vec{x},\vec{y}\rangle + \langle\vec{y},\vec{x}\rangle + \langle\vec{y},\vec{y}\rangle=\|\vec{x}\|^2 +2 \langle\vec{x},\vec{y}\rangle+\|\vec{y}\|^2\\
+\|\vec{x}-\vec{y}\|^2 = \langle\vec{x}-\vec{y},\vec{x}-\vec{y}\rangle = \langle\vec{x},\vec{x}\rangle - \langle\vec{x},\vec{y}\rangle - \langle\vec{y},\vec{x}\rangle + \langle\vec{y},\vec{y}\rangle=\|\vec{x}\|^2 -2 \langle\vec{x},\vec{y}\rangle+\|\vec{y}\|^2
+\end{eqnarray*}
+Top row minus the bottom row, divided by 4 yields the identity.\\
+
+The expression above is symmetric and non-negative, so if it fails to be an inner product it must fail the bilinearity condition.
+\item Consider the vector space of polynomials of degree $\le n$ and the inner product $\langle p,q\rangle = \int_0^1 p(x)q(x)\mathrm{d}x$. Find an expression for the Gram matrix associated with the monomial basis for this space. This matrix is called the Hilbert matrix. Explain why it is positive definite.
+
+{\bf Solution:} Let the monomial basis be $\vec{v}_i = x^{i-1}$. The entries of the Gram matrix are the inner products of these vectors:
+\[\left(\mathbf{H}\right)_{ij} = \langle\vec{v}_i,\vec{v}_j\rangle = \int_0^1x^{i+j-2}\mathrm{d}x = \frac{1}{i+j-1}.\]
+Every Gram matrix is symmetric and at least non-negative definite. It is positive definite if and only if the vectors used to construct the Gram matrix are linearly independent. Here we used the monomial {\it basis} to construct the Gram matrix, and the vectors in a basis are always linearly independent, so the Gram matrix must be positive definite.
+%\item Let $\mathbf{K}$ be symmetric and positive definite and assume it has the factorization $\mathbf{LDL}^T$ from the notes. Prove that the diagonal elements of $\mathbf{D}$ must be positive.
+%
+%{\bf Solution:} 
+%\[0\le\vec{x}^T\mathbf{K}\vec{x} = \vec{x}^T\mathbf{LDL}^T\vec{x} = \vec{y}^T\mathbf{D}\vec{y} = \sum_i d_{ii}y_i^2\]
+%where $\vec{y} = \mathbf{L}^T\vec{x}$.
+%
+%Suppose that one of the $d_{ii}$ is non-positive. Then we can construct a nonzero vector $\vec{y}$ such that $\vec{x}^T\mathbf{K}\vec{x}$ is non-positive.
+%In order to complete the argument we have to show that if $\vec{y}\neq\vec{0}$ then there is some $\vec{x}\neq\vec{0}$ such that $\vec{y} = \mathbf{L}^T\vec{x}$.
+%The $\mathbf{L}$ matrix in an LU factorization is always invertible (lower-triangular with ones on the diagonal), so for every $\vec{y}$ there is a unique solution $\vec{x}$ to the linear system $\mathbf{L}^T\vec{x}=\vec{y}$, and $\vec{x}=\vec{0}$ if and only if $\vec{y}=\vec{0}$. This completes the proof.
+
+\item Every square matrix $\mathbf{A}$ can be uniquely decomposed into a sum of a symmetric and an antisymmetric matrix:
+\[\mathbf{A} = \frac{\mathbf{A}+\mathbf{A}^T}{2} + \frac{\mathbf{A} - \mathbf{A}^T}{2}.\]
+Show that if $\mathbf{J}$ is real and antisymmetric, then $\vec{x}^T\mathbf{J}\vec{x} = 0$ for every $\vec{x}\in\mathbb{R}^n$.
+
+{\bf Solution:} Note that $\vec{x}^T\mathbf{J}\vec{x}$ is a scalar, so it is equal to its own transpose:
+\[\vec{x}^T\mathbf{J}\vec{x} = \left(\vec{x}^T\mathbf{J}\vec{x}\right)^T = \vec{x}^T\mathbf{J}^T\vec{x} = -\vec{x}^T\mathbf{J}\vec{x}.\]
+The only number equal to its negative is zero.
+
+\item Riesz representation theorem:
+	\begin{itemize}
+	\item[(a)] Consider the linear functional $L[x\vec{e}_1+y\vec{e}_2+z\vec{e}_3] = y$ and the inner product defined by
+	\[\langle\vec{x},\vec{y}\rangle = \vec{x}^T\mathbf{K}\vec{y}\text{ where }\mathbf{K} = \left[\begin{array}{ccc}2&1&\\1&2&1\\&1&2\end{array}\right].\]
+	Find the vector $\vec{z}\in\mathbb{R}^3$ such that $L[\vec{x}] = \langle\vec{x},\vec{z}\rangle$ for all $\vec{x}$. (Use {\tt numpy} or Mathematica if you don't want to solve by hand.)
+	
+	{\bf Solution:} We can write 
+	\[L[\vec{x}] = \vec{x}^T\left(\begin{array}{c}0\\1\\0\end{array}\right).\]
+	We want to find a $\vec{z}$ that solves
+	\[\vec{x}^T\left(\begin{array}{c}0\\1\\0\end{array}\right) = \vec{x}^T\mathbf{K}\vec{z}\]
+	for every $\vec{x}$, i.e.
+	\[\mathbf{K}\vec{z}= \left(\begin{array}{c}0\\1\\0\end{array}\right).\]
+	The solution is
+	\[\vec{z} = \left(\begin{array}{c}-\frac{1}{2}\\1\\-\frac{1}{2}\end{array}\right).\]
+	
+	\item[(b)] Consider the linear functional $L[p] = \int_0^1 e^{-x}p(x)\mathrm{d}x$ defined on polynomials of degree $\le 2$ and using the inner product $\langle p,q\rangle = \int_0^1p(x)q(x)\mathrm{d}x.$ Find the polynomial $r(x)$ of degree $\le 2$ such that $L[p] = \langle p,r\rangle$ for every polynomial $p$ of degree $\le 2$.  (Use Mathematica or similar to speed up the analysis.)
+
+	{\bf Solution:} Use the monomial basis. Any $p$ in the space can be written $p(x) = a + b x + c x^2$.
+	The polynomial $r$ that we're looking for can also be written in the monomial basis: $r(x) = u + v x + w x^2$. The condition is that
+	\[\int_0^1e^{-x}(a + b x + c x^2)\mathrm{d}x = \int_0^1(u + v x + w x^2)(a + b x + c x^2)\mathrm{d}x\quad\forall a,b,c\in\mathbb{R}.\]
+	As in part (a) we can get a system of equations by considering one equation for $a$, one for $b$, and one for $c$. This yields the linear system
+	\[\left[\begin{array}{ccc}1&\frac{1}{2}&\frac{1}{3}\\\frac{1}{2}&\frac{1}{3}&\frac{1}{4}\\\frac{1}{3}&\frac{1}{4}&\frac{1}{5}\end{array}\right]\left(\begin{array}{c}u\\v\\w\end{array}\right) = \left(\begin{array}{c}1 - \frac{1}{e}\\1-\frac{2}{e}\\2 - \frac{5}{e}\end{array}\right).\]
+	The solution is
+	\[\left(\begin{array}{c}\frac{3 (11 e-29)}{e}\\-\frac{12 (17 e-46)}{e}\\\frac{30 (7 e-19)}{e}\end{array}\right)\text{ i.e. }r(x) = \frac{3 (11 e-29)}{e} + (-\frac{12 (17 e-46)}{e})x + (\frac{30 (7 e-19)}{e})x^2\]
+	\end{itemize}
+	If you plot $r(x)$ and $e^{-x}$ on $x\in[0,1]$ you will see that $r(x)$ closely approximates $e^{-x}$ over this range.
+
+\item Consider the linear function $L[f](x) = \mathrm{d}[xf'(x)]/\mathrm{d}x$ acting on polynomials of degree $\le 2$, and the inner product $\langle p,q\rangle = \int_0^1 x p(x) q(x)\mathrm{d}x$. What is the adjoint of $L$ with respect to this inner product?  Hint: Express your solution as a map from monomial coefficients to monomial coefficients, and use Mathematica or numpy to aid the computation.
+
+{\bf Solution:} You may be tempted to use integration by parts here, but it will not work well because it doesn't know that we're dealing with polynomials of degree $\le 2$.
+
+We want a linear function $L^\dag$ on polynomials such that
+\[\langle p,L[q]\rangle = \int_0^1 x p(x) \frac{\mathrm{d}[xq'(x)]}{\mathrm{d}x}\mathrm{d}x=\langle L^\dag[p],q\rangle = \int_0^1 x L^\dag[p](x)q(x) \mathrm{d}x\]
+for every $p$ and $q$ in the space.
+
+We could find a matrix representation of $L$ as well as of the inner product, and then use matrix algebra to find the adjoint. We will instead pursue an equivalent approach.
+
+As above, let $\vec{v}_i = x^{i-1}$ denote the monomial basis vectors.
+Let
+\[L^\dag[\vec{v}_j] = \sum_{i}a_{ij}\vec{v}_i.\]
+
+We want the above condition to hold for every $p$ and $q$, so we can impose that it holds for every combination $p = \vec{v}_i$, $q=\vec{v}_j$, which leads to
+\[\langle \vec{v}_i,L[\vec{v}_j]\rangle = \int_0^1 x x^{i-1} (j-1)^2x^{j-2}\mathrm{d}x=\langle L^\dag[\vec{v}_i],\vec{v}_j\rangle = \int_0^1 x (\sum_{m}a_{mi}x^{m-1})x^{j-1} \mathrm{d}x\]
+i.e.
+\[\frac{(j-1)^2}{i+j-1} = \sum_m\frac{a_{mi}}{m+j}\text{ for }i=1,2,3\text{ and }j=1,2,3.\]
+This is a system of 9 linear equations in 9 unknowns.
+
+The solution is
+\[L^\dag[a+bx+cx^2] = x^2 (440 a+360 b+300 c)-x (510 a+420 b+351 c)+(120 a+100 b+84 c)\]
+
+\end{enumerate}
+ 
+
+\end{document}

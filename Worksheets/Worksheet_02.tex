@@ -24,12 +24,14 @@
 
 \begin{enumerate}
 \item Let $\vec{x}$ and $\vec{y}$ be vectors in an inner product space and let $\|\cdot\|$ be derived from the inner product. Prove that $\vec{x}\perp\vec{y}$ if and only if $\|\vec{y}\|\le\|\vec{y}+t\vec{x}\|$ for all scalars $t\in\mathbb{R}$.
-\item Prove that $\langle\mathbf{A},\mathbf{B}\rangle=$ Tr$\left(\mathbf{AB}^T\right)$ is an inner product on the space of real $m\times n$ matrices. (Note that this implies that $(\langle\mathbf{A},\mathbf{A}\rangle)^{1/2}$ defines a norm on real $m\times n$ matrices; this norm is called the Frobenius norm. It is not an operator norm. It is not the matrix 2-norm.)
+\item Prove that $\langle\mathbf{A},\mathbf{B}\rangle=$ Tr$\left(\mathbf{AB}^T\right)$ is an inner product on the space of real $m\times n$ matrices. The trace Tr of an $n\times n$ matrix is the sum of the diagonal elements
+\[\text{Tr}(\mathbf{A}) = \sum_{i=1}^na_{ii}.\]
+(Note that this implies that $(\langle\mathbf{A},\mathbf{A}\rangle)^{1/2}$ defines a norm on real $m\times n$ matrices; this norm is called the Frobenius norm. It is not an operator norm. It is not the matrix 2-norm.)
 \item Suppose that you have a norm $\|\cdot\|$ on a real vector space but you don't know if it comes from an inner product.
 Prove that if the norm does come from an inner product, then the inner product must be
 	\[\langle\vec{x},\vec{y}\rangle = \frac{1}{4}\left(\|\vec{x}+\vec{y}\|^2-\|\vec{x}-\vec{y}\|^2\right).\] This is called a polarization identity. If the norm does not come from an inner product, which of the three properties of an inner product will it fail to satisfy?
 \item Consider the vector space of polynomials of degree $\le n$ and the inner product $\langle p,q\rangle = \int_0^1 p(x)q(x)\mathrm{d}x$. Find an expression for the Gram matrix associated with the monomial basis for this space. This matrix is called the Hilbert matrix. Explain why it is positive definite.
-\item Let $\mathbf{K}$ be symmetric and positive definite and assume it has the factorization $\mathbf{LDL}^T$ from the notes. Prove that the diagonal elements of $\mathbf{D}$ must be positive.
+%\item Let $\mathbf{K}$ be symmetric and positive definite and assume it has the factorization $\mathbf{LDL}^T$ from the notes. Prove that the diagonal elements of $\mathbf{D}$ must be positive. I talked through this in lecture, so I'm deleting it from the worksheet.
 \item Every square matrix $\mathbf{A}$ can be uniquely decomposed into a sum of a symmetric and an antisymmetric matrix:
 \[\mathbf{A} = \frac{\mathbf{A}+\mathbf{A}^T}{2} + \frac{\mathbf{A} - \mathbf{A}^T}{2}.\]
 Show that if $\mathbf{J}$ is real and antisymmetric, then $\vec{x}^T\mathbf{J}\vec{x} = 0$ for every $\vec{x}\in\mathbb{R}^n$.
