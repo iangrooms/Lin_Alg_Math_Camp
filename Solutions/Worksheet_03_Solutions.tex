@@ -1,0 +1,86 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#3: Solutions}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Consider the space of polynomials of degree $\le 3$ with inner product $\langle p,q\rangle = \int_{-1}^1p(x)q(x)\mathrm{d}x.$ Apply Gram-Schmidt to the monomial basis to obtain an orthogonal basis for the space. The resulting polynomials are called Legendre polynomials.
+
+{\bf Solution:} 
+\[\vec{v}_1 = 1\]
+\[\vec{v}_2 = x - \frac{\langle x,\vec{v}_1\rangle}{\|\vec{v}_1\|^2}\vec{v}_1 = x\]
+\[\vec{v}_3 = x^2 -\frac{\langle x^2,\vec{v}_2\rangle}{\|\vec{v}_2\|^2}\vec{v}_2- \frac{\langle x^2,\vec{v}_1\rangle}{\|\vec{v}_1\|^2}\vec{v}_1 = x^2 - \frac{1}{3}\]
+\[\vec{x}_4 = x^3 - \frac{\langle x^3,\vec{v}_3\rangle}{\|\vec{v}_3\|^2}\vec{v}_3- \frac{\langle x^3,\vec{v}_2\rangle}{\|\vec{v}_2\|^2}\vec{v}_2- \frac{\langle x^3,\vec{v}_1\rangle}{\|\vec{v}_1\|^2}\vec{v}_1 = x^3 - \frac{3}{5}x.\]
+\item Consider the space $V$ of functions $f$ that are continuous on $[-\pi,\pi]$, with subspace $W$ spanned by
+\[\cos(nx),n=0,\ldots,N;\sin(nx),n=1,\ldots,N.\]
+Find an expression for the orthogonal projection of a function $f\in V$ onto $W$.\\
+
+{\bf Solution:} In general when computing orthogonal projections we have a basis $\vec{w}_1,\ldots,\vec{w}_n$, we expand the solution 
+\[\vec{w} = \sum_{j=1}^n c_j\vec{w}_j\]
+and we find the unknown coefficients by enforcing
+\[\langle\vec{w},\vec{w}_i\rangle = \langle\vec{v},\vec{w}_i\rangle\quad\forall i.\]
+Inserting the expansion into the above yields
+\[\langle\sum_{j=1}^nc_j\vec{w}_j,\vec{w}_i\rangle = \sum_{j=1}^m\langle\vec{w}_j,\vec{w}_i\rangle c_j = \langle\vec{v},\vec{w}_i\rangle\quad\forall i.\]
+You find the unknown coefficients $c_j$ by solving the linear system
+\[\mathbf{A}\vec{c} = \vec{b}\]
+where
+\[a_{ij} = \langle\vec{w}_j,\vec{w}_i\rangle,\;b_i = \langle\vec{v},\vec{w}_i\rangle.\]
+The coefficient matrix {\bf A} is a Gram matrix formed from basis vectors, so the system is always uniquely solvable.\\
+
+In this specific problem we just need to insert our basis into the formulas.
+The elements of the Gram matrix are
+\[\langle 1,\cos(nx)\rangle = \int_{-\pi}^\pi 1\times \cos(n x)\mathrm{d}x = 0\]
+\[\langle 1,\sin(nx)\rangle = \int_{-\pi}^\pi 1\times \sin(n x)\mathrm{d}x = 0\]
+\[\langle\cos(m x),\sin(nx)\rangle = \int_{-\pi}^\pi \cos(mx)\sin(n x)\mathrm{d}x = 0\]
+\[\langle \cos(mx),\cos(nx)\rangle = \int_{-\pi}^\pi \cos(mx)\cos(n x)\mathrm{d}x = \int_{-\pi}^\pi \frac{\cos((m+n)x)+\cos((m-n)x)}{2}\mathrm{d}x = \pi\delta_{mn}\]
+\[\langle \sin(mx),\sin(nx)\rangle = \int_{-\pi}^\pi \sin(mx)\sin(n x)\mathrm{d}x = \int_{-\pi}^\pi \frac{\cos((m-n)x)-\cos((m+n)x)}{2}\mathrm{d}x = \pi\delta_{mn}\]
+\[\langle 1,1\rangle = \int_{-\pi}^\pi 1\mathrm{d}x = 2\pi.\]
+Clearly the only nonzero elements are on the diagonal, meaning that the vectors/functions that were provided in the problem statement are orthogonal.
+Since none of the functions is 0, they are a basis for their span.
+Because the Gram matrix is diagonal, the linear system is easy to solve for the coefficients:
+\[a_0 = \frac{1}{2\pi}\langle 1,f(x)\rangle = \frac{1}{2\pi}\int_{-\pi}^\pi f(x)\mathrm{d}x.\]
+\[a_n = \frac{1}{\pi}\langle\cos(nx),f(x)\rangle = \frac{1}{\pi}\int_{-\pi}^\pi\cos(nx) f(x)\mathrm{d}x.\]
+\[b_n = \frac{1}{\pi}\langle\sin(nx),f(x)\rangle = \frac{1}{\pi}\int_{-\pi}^\pi\sin(nx) f(x)\mathrm{d}x.\]
+
+
+\item Let $\mathbf{A}$ be a real skew-symmetric matrix. Without referring to eigenvalues, prove that
+\[\mathbf{Q} = (\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1}\]
+is
+	\begin{itemize}
+	\item[(a)] Well-defined (i.e.\ the inverse exists)
+	
+	{\bf Solution:} Consider that since $\mathbf{A}$ is skew-symmetric, we have $\vec{x}^T\mathbf{A}\vec{x} = 0$ for every $\vec{x}$. This implies $\vec{x}^T(\mathbf{I}+\mathbf{A})\vec{x} = \|\vec{x}\|_2^2$. Now if $\mathbf{I} + \mathbf{A}$ were a singular -- i.e. not invertible -- matrix, then there would be a $\vec{x}\neq\vec{0}$ such that $(\mathbf{I} + \mathbf{A})\vec{x} = \vec{0}$. But for this $\vec{x}$ we would have $\vec{x}^T(\mathbf{I}+\mathbf{A})\vec{x} = \|\vec{x}\|_2^2=0$ which is a contradiction. So $\mathbf{I} + \mathbf{A}$ must be nonsingular, i.e. invertible.
+	\item[(b)] An orthogonal matrix.
+	
+	{\bf Solution:} We want to show that the transpose of $\mathbf{Q}$ is its inverse. This can be done from the left or the right; there is no need to do both because the left inverse is necessarily equal to the right inverse for square matrices. We will prove that the transpose is the left inverse:
+	
+	\[\left[(\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1}\right]^T(\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1}=(\mathbf{I}+\mathbf{A})^{-T}(\mathbf{I}-\mathbf{A})^T(\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1}\]
+	\[=(\mathbf{I}+\mathbf{A}^T)^{-1}(\mathbf{I}-\mathbf{A}^T)(\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1}=(\mathbf{I}-\mathbf{A})^{-1}(\mathbf{I}+\mathbf{A})(\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1}\]
+	Now consider the product in the middle:
+	\[(\mathbf{I}+\mathbf{A})(\mathbf{I}-\mathbf{A}) = \mathbf{I} - \mathbf{A}^2 = (\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A}).\]
+	This implies
+	\[(\mathbf{I}-\mathbf{A})^{-1}(\mathbf{I}+\mathbf{A})(\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1}=(\mathbf{I}-\mathbf{A})^{-1}(\mathbf{I}-\mathbf{A})(\mathbf{I}+\mathbf{A})(\mathbf{I}+\mathbf{A})^{-1} = \mathbf{I}.\]
+	\end{itemize}
+\end{enumerate}
+ 
+
+\end{document}
