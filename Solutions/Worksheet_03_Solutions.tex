@@ -47,7 +47,11 @@ where
 The coefficient matrix {\bf A} is a Gram matrix formed from basis vectors, so the system is always uniquely solvable.\\
 
 In this specific problem we just need to insert our basis into the formulas.
-The elements of the Gram matrix are
+The basis vectors/functions are given in the problem statement; we will expand our solution in this basis as follows
+\[\vec{w} = a_0 + \sum_{n=1}^N a_n\cos(nx)+b_n\sin(nx).\]
+The coordinates/coefficients $a_n$ and $b_n$ in this specific expression correspond to the coordinates/coefficients $c_i$ in the general version.
+The elements of the Gram matrix are inner products of the basis vectors.
+In our case all possible inner products of basis vectors are
 \[\langle 1,\cos(nx)\rangle = \int_{-\pi}^\pi 1\times \cos(n x)\mathrm{d}x = 0\]
 \[\langle 1,\sin(nx)\rangle = \int_{-\pi}^\pi 1\times \sin(n x)\mathrm{d}x = 0\]
 \[\langle\cos(m x),\sin(nx)\rangle = \int_{-\pi}^\pi \cos(mx)\sin(n x)\mathrm{d}x = 0\]
@@ -55,7 +59,7 @@ The elements of the Gram matrix are
 \[\langle \sin(mx),\sin(nx)\rangle = \int_{-\pi}^\pi \sin(mx)\sin(n x)\mathrm{d}x = \int_{-\pi}^\pi \frac{\cos((m-n)x)-\cos((m+n)x)}{2}\mathrm{d}x = \pi\delta_{mn}\]
 \[\langle 1,1\rangle = \int_{-\pi}^\pi 1\mathrm{d}x = 2\pi.\]
 Clearly the only nonzero elements are on the diagonal, meaning that the vectors/functions that were provided in the problem statement are orthogonal.
-Since none of the functions is 0, they are a basis for their span.
+Since they are orthogonal and none of the functions is 0, they are a basis for their span.
 Because the Gram matrix is diagonal, the linear system is easy to solve for the coefficients:
 \[a_0 = \frac{1}{2\pi}\langle 1,f(x)\rangle = \frac{1}{2\pi}\int_{-\pi}^\pi f(x)\mathrm{d}x.\]
 \[a_n = \frac{1}{\pi}\langle\cos(nx),f(x)\rangle = \frac{1}{\pi}\int_{-\pi}^\pi\cos(nx) f(x)\mathrm{d}x.\]
