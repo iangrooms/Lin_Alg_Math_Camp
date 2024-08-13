@@ -1,0 +1,97 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#4: Solutions}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Find a symmetric matrix $\mathbf{H}$, vector $\vec{b}$, and constant c so that
+\[q(x_1,x_2,x_3) = 4x_1^2+4x_1x_2 + 2x_1x_3 + x_2^2+6x_2x_3 + 3x_3^2 -2x_1+x_2-x_3+5 = \frac{1}{2}\vec{x}^T\mathbf{H}\vec{x} + \vec{x}^T\vec{b} + c.\]
+
+{\bf Solution:} Notice that $\mathbf{H}$ is the Hessian of $q$, so we can obtain the entries of $\mathbf{H}$ by taking second partial derivatives of $q$.
+The solution is
+\begin{equation}
+\mathbf{H} = \left[\begin{array}{ccc}8&4&2\\4&2&6\\2&6&6\end{array}\right].
+\end{equation}
+The linear part of $q$ is $ -2x_1+x_2-x_3 = \vec{x}^T\vec{b}$ where $\vec{b} = (-2,1,-1)^T$. The constant is $c=5$.
+
+
+\item Suppose that you have a real finite-dimensional vector space $V$ whose elements are functions of $x$ (e.g. polynomials or trig functions), and you have a basis for that space $\vec{v}_1,\ldots,\vec{v}_m$. (These `vectors' are functions.) Assume that you have an inner product on $V$ $\langle\cdot,\cdot\rangle$. You have some function $f$ such that $\langle\vec{v}_i,f\rangle$ exists for all $i$. You want to find $\vec{v}\in V$ that minimizes $\|f-\vec{v}\|^2 = \langle f-\vec{v},f-\vec{v}\rangle$. Explain why a solution always exists and give a formula for the solution.
+
+{\bf Solution:} Let $\vec{v} = x_1\vec{v}_1 + \cdots+x_m\vec{v}_m$.
+Consider the function
+
+\[q(x_1,\ldots,x_m) = \|f-\vec{v}\|^2 = \langle f-\vec{v},f-\vec{v}\rangle=\|f\|^2 -2\sum_{i=1}^mx_i\langle f,\vec{v}_i\rangle + \sum_{i=1}^m\sum_{j=1}^mx_ix_j\langle\vec{v}_i,\vec{v}_j\rangle.\]
+
+Notice that this is a quadratic function
+
+\[q(x_1,\ldots,x_m) =\vec{x}^T\mathbf{M}\vec{x} -2\vec{x}^T\vec{b} + c\]
+
+where
+\[m_{ij} = \langle\vec{v}_i,\vec{v}_j\rangle,\;\; b_i = \langle f,\vec{v}_i\rangle,\;\;c = \|f\|^2.\]
+
+The matrix {\bf M} is clearly a Gram matrix, and since the vectors used in its construction are linearly independent, {\bf M} is symmetric and positive definite.
+The quadratic function $q$ therefore has a unique minimizer that occurs at the critical point, which is the solution of
+\[\nabla q = 2\mathbf{M}\vec{x} -2\vec{b} = \vec{0}.\]
+The solution of $\mathbf{M}\vec{x} = \vec{b}$ gives the coordinates of $\vec{v}$ with respect to the basis $\vec{v}_1,\ldots,\vec{v}_m$.
+Explicitly,
+\[\vec{v} =  x_1\vec{v}_1 + \cdots+x_m\vec{v}_m\]
+where the $x_i$ are the entries of 
+\[\vec{x} = \mathbf{M}^{-1}\vec{b}.\]
+
+\item Consider the problem of optimizing a quadratic function 
+
+$$q(\vec{x}) = \frac{1}{2}\vec{x}^T\mathbf{K}\vec{x} + \vec{x}^T\vec{b} + c $$
+
+subject to a linear equality constraint
+
+$$\vec{d}^T\vec{x} = e\;\text{ i.e. }\;g(\vec{x}) = \vec{d}^T\vec{x} - e= 0$$
+
+where we can assume that $\mathbf{K}$ is symmetric without loss of generality, and also assume $\vec{d}\neq\vec{0}$.
+
+	\begin{itemize}
+	\item[(a)] Apply the method of Lagrange multipliers and write the optimality condition as a linear system of equations for $\vec{x}$ and $\lambda$.
+	
+	{\bf Solution:} The two conditions are
+	\begin{eqnarray*}
+	\mathbf{K}\vec{x}  +\vec{b} &= \lambda \vec{d}\\
+	\vec{d}^T\vec{x} &= e
+	\end{eqnarray*}
+	The unknowns are $\vec{x}$ and $\lambda$. Putting the above linear system of equations into the standard form yields
+	\[\left[\begin{array}{c|c}\mathbf{K}&-\vec{d}\\\hline -\vec{d}^T&0\end{array}\right]\left(\begin{array}{c}\vec{x}\\\lambda\end{array}\right) = \left(\begin{array}{c}-\vec{b}\\-e\end{array}\right).\]
+	\item[(b)] The coefficient matrix in (a) should be symmetric. Explain why it cannot be positive definite even if $\mathbf{K}$ is positive definite.
+	
+	{\bf Solution:} There is a zero on the diagonal, which prevents the matrix from being positive definite. In this case $\vec{e}_n^T\mathbf{A}\vec{e}_n=0$.
+	\item[(c)] Assuming that $\mathbf{K}$ is positive definite, use block Gaussian elimination to find an explicit expression for the solution $\vec{x}$.
+	
+	{\bf Solution:} Multiply the top row by $\vec{d}^T\mathbf{K}^{-1}$ and add to the bottom row to obtain
+	\[\left[\begin{array}{c|c}\mathbf{K}&-\vec{d}\\\hline &-\vec{d}^T\mathbf{K}^{-1}\vec{d}\end{array}\right]\left(\begin{array}{c}\vec{x}\\\lambda\end{array}\right) = \left(\begin{array}{c}-\vec{b}\\-e-\vec{d}^T\mathbf{K}^{-1}\vec{b}\end{array}\right).\]
+	Since $\vec{d}\neq\vec{0}$ and {\bf K} is positive definite, we know that $\vec{d}^T\mathbf{K}^{-1}\vec{d}\neq 0$. So divide the bottom row by $-\vec{d}^T\mathbf{K}^{-1}\vec{d}$ which gives us the solution for $\lambda$
+	\[\lambda = \frac{e+\vec{d}^T\mathbf{K}^{-1}\vec{b}}{\vec{d}^T\mathbf{K}^{-1}\vec{d}}.\]
+	Now substitute this value into the top row, and move it to the RHS, which yields
+	\[\mathbf{K}\vec{x} = -\vec{b} +\lambda \vec{d}.\]
+	Since $\mathbf{K}$ is positive definite, the solution is (formally)
+	\[\vec{x} = \mathbf{K}^{-1}\left(-\vec{b} +\lambda \vec{d}\right).\]
+	\end{itemize}
+\end{enumerate}
+ 
+
+\end{document}
