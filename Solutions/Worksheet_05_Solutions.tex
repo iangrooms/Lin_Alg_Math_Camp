@@ -98,15 +98,19 @@ Since $\vec{y}=\vec{0}$ only when $\vec{x}=\vec{0}$ (because $\mathbf{L}$ is inv
 \[\mathbf{L} = \lambda_1 \mathbf{P}_1 + \cdots+\lambda_m\mathbf{P}_m\]
 where $\mathbf{P}_i$ is an orthogonal projection matrix that projects orthogonally onto the nullspace of $\mathbf{L} - \lambda_i\mathbf{I}$.
 
-{\bf Solution:} Since {\bf A} is symmetric it has a real orthogonal eigenvalue decomposition
-\[\mathbf{A} = \mathbf{Q\Lambda Q}^T.\]
+{\bf Solution:} Since {\bf L} is symmetric it has a real orthogonal eigenvalue decomposition
+\[\mathbf{L} = \mathbf{Q\Lambda Q}^T.\]
 Write
 \[\mathbf{Q} = [\vec{q}_1,\cdots,\vec{q}_n].\;\;\mathbf{\Lambda} = \text{diag}(\mu_1,\ldots,\mu_n).\]
+The eigenvalues of $\mathbf{L}$ are $\mu_1,\ldots,\mu_n$. But we already said that the eigenvalues of $\mathbf{L}$ are $\lambda_1,\ldots,\lambda_m$! What gives?
+The list of $\mu_i$ has all the eigenvalues including potential repeats, while the list $\lambda_1,\ldots,\lambda_m$ has all the eigenvalues {\it not} counting repeats.
+
 The eigenvalue decomposition can be equivalently written
-\[\mathbf{A} = \mu_1\vec{q}_1\vec{q}_q^T + \ldots + \mu_n\vec{q}_n\vec{q}_n^T.\]
+\[\mathbf{L} = \mu_1\vec{q}_1\vec{q}_1^T + \ldots + \mu_n\vec{q}_n\vec{q}_n^T.\]
 If we group the eigenvalues we get
-\[\mathbf{A} = \lambda_1 [\vec{q}_1,\cdots][\vec{q}_1,\cdots]^T+\ldots + \lambda_m[\vec{q}_r,\cdots][\vec{q}_r,\cdots]^T.\]
+\[\mathbf{L} = \lambda_1 [\vec{q}_1,\cdots][\vec{q}_1,\cdots]^T+\ldots + \lambda_m[\vec{q}_r,\cdots][\vec{q}_r,\cdots]^T.\]
 Each of the matrices $[\vec{q}_r,\cdots][\vec{q}_r,\cdots]^T$ is an orthogonal projection matrix that projects orthogonally onto the eigenspace associated with $\lambda_r$.
+(The subscript $r$ is not a typo -- it reflects the fact that $\vec{q}_r$ is an eigenvector for $\mu_r$, and $\mu_r$ equals $\lambda_m$. The use of $r$ is in no way related to rank.)
 The notation in this solution is not great, but making it precisely correct requires an overload of notation.
 
 \item Prove that if $\mathbf{A}$ is invertible (and, for simplicity, real), then there is an orthogonal matrix $\mathbf{U}$ and a symmetric and positive definite matrix $\mathbf{E}$ such that $\mathbf{A} = \mathbf{UE}$. This is analogous to writing complex numbers in polar form $x+\imag y = \rho e^{\imag \theta}$. Show that if $\mathbf{A}$ is square but not invertible then there is a similar factorization but with $\mathbf{E}$ being symmetric and non-negative definite.

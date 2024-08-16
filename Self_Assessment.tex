@@ -1,0 +1,113 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf CU APPM}}
+\rhead{{\bf Summer 2024}}
+\chead{Linear Algebra Self-Assessment}
+\cfoot{\thepage}
+
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\ran}{Ran}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}         
+
+
+%\begin{multicols}{2}
+%\noindent{\bf Your Name:}\\
+%\vspace{.25in}
+%
+%\noindent{\bf Professor or Section:}\\
+%\columnbreak
+%
+%
+%\begin{flushright}
+%\begin{tabular}{|c|r|} 
+%\hline
+%1 & \hspace{10mm} / 32 \\
+%\hline
+%2 & \hspace{10mm} / 24 \\
+%\hline
+%3 & \hspace{10mm} / 20 \\
+%\hline
+%4 & \hspace{10mm} / 24 \\
+%\hline
+%$\Sigma$ & \hspace{10mm} / 100 \\
+%\hline
+%\end{tabular}
+%\end{flushright}
+%\end{multicols}
+%
+%\vspace{2mm}
+%
+%\hrule 
+
+%\vspace{1mm}
+\noindent This document contains linear-algebra questions covering background material for the APPM PhD program at CU-Boulder. For each question simply indicate how confident you are of being able to answer it correctly. All vectors are lists of real numbers unless specified otherwise.
+
+\vspace{3mm}
+
+\hrule 
+
+
+\begin{enumerate}
+\item Can you find, by hand, an expression that describes all solutions of a system of linear equations, whenever at least one solution exists?
+\item Can you find the rank of a $m\times n$ matrix by hand?
+\item Suppose that $\mat{A}$ is an $m\times n$ matrix with rank $n$ and $\mat{1}$ is an $n\times n$ matrix of ones. Prove that $$\mat{A}\left(\mat{I} - \frac{1}{n}\mat{1}\right)$$ has rank exactly $n-1$. 
+\item Suppose that you are given $\mat{A}$, $\mat{B}$, and $\vec{x}$. Do you know how to evaluate the expression $(\mathbf{A}+\mathbf{B}^{-1})^{-1}\vec{x}$ without computing the inverse of any matrices?
+\item Can you find a basis for the range (aka image, aka column space), the co-range (aka co-image, aka row space), the kernel (aka null space), and the co-kernel (aka left hand null space) of an $n\times m$ matrix by hand?
+\item Suppose that you are given $P$ pairs of vectors $(\vec{x}_1,\vec{b}_1)$, \ldots, $(\vec{x}_P,\vec{b}_P)$ all of which satisfy
+\[\mathbf{A}\vec{x}_p = \vec{b}_p,\;\;p=1,\ldots,P\]
+where $\mathbf{A}$ is an $m\times n$ matrix that is not given to you. If you are given a vector $\vec{b}$ that is in the span of $\{\vec{b}_1,\ldots,\vec{b}_P\}$, can you find a solution $\vec{x}$ to $\mathbf{A}\vec{x} = \vec{b}$? (The question is not asking whether a solution exists, which it does. It's asking if you know how to find it without knowing the matrix $\mathbf{A}$.)
+\item Consider the linear operator $\mathcal{L}: f\mapsto x f'$ acting on the space of polynomials of degree $\le 5$. Can you find a matrix representation of this operator with respect to the monomial basis?
+\item Consider the linear, non-autonomous system of ordinary differential equations
+\[\frac{\mathrm{d}\vec{x}}{\mathrm{d}t} = \mat{L}(t)\vec{x}.\]
+Prove that there is a matrix $\bm{\Pi}(t)$ such that $\bm{\Pi}(t)\vec{x}_0$ is the solution to the differential equation at time $t$ starting from initial condition $\vec{x}(t=0) = \vec{x}_0$.
+\item Do you know the definitions of the $p$ norms of vectors and matrices for $1\le p \le \infty$?
+\item Suppose that $\mat{A}$ is an $m\times n$ matrix. Can you prove that $\mat{A}^T\mat{A}$ is non-negative definite? Could you state necessary and sufficient conditions on $\mat{A}$ so that $\mat{A}^T\mat{A}$ is positive definite?
+\item Define $f:(\vec{x},\vec{y})\mapsto \vec{x}^T\mat{K}\vec{y}$ for a square matrix $\mat{K}$. Under what conditions on $\mat{K}$ does $f(\vec{x},\vec{y})$ define an inner product on $\mathbb{R}^n$?
+\item Give an expression for the adjoint of $\mat{A}$ with respect to the inner product defined by $\vec{x}^T\mat{K}\vec{y}$.
+\item Given two vectors in $\mathbb{R}^n$, can you find the Euclidean angle between them?
+\item Given an $m\times n$ matrix $\mat{A}$ and a vector $\vec{b}$ in $\mathbb{R}^m$, can you find the orthogonal projection of $\vec{b}$ onto the range of $\mat{A}$? (Assume orthogonality is defined with respect to the dot product.)
+\item Given a nonzero $m\times n$ matrix $\mat{A}$, can you find an {\it orthonormal} basis for its range? (The question is not asking whether such a basis exists; it is asking whether you know how to find one.)
+\item Can you prove the following statement: If $\mathbf{A}$ is skew-symmetric, then 
+\[\left(\mat{I} - \mat{A}\right)\left(\mat{I} + \mat{A}\right)^{-1}\]
+is well-defined and is an orthogonal matrix with determinant equal to 1?
+\item Prove that the eigenvalues of $\mat{A}$ are also eigenvalues of $\mat{A}^T$ without making reference to the properties of the determinant.
+\item Suppose that there is an invertible matrix $\mat{S}$ such that $\mat{SA} = \mat{BS}$. Prove that $\mat{A}$ and $\mat{B}$ have the same eigenvalues. 
+%\item Show that the eigenvalues of the matrix
+%\[\left[\begin{array}{ccccc}0&0&\cdots&0&-c_0\\1&0&\cdots&0&-c_1\\0&1&\cdots&0&-c_2\\\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&\cdots&1&-c_{n-1}\end{array}\right]\]
+%Are the same as the roots of the polynomial $p(x) = c_0 + c_1 x + \ldots + c_{n-1}x^{n-1} + x^n$. Hint: 
+\item Give an example of a $2\times 2$ matrix that is not diagonalizable.
+\item Suppose that $\mat{A}$ is symmetric and that $\mat{A}=\mat{LU}$ is an LU factorization of $\mat{A}$. If the diagonal values of $\mat{U}$ are all positive, what can you conclude, if anything, about the eigenvalues of $\mat{A}$?
+\item Prove that $\rho(\mat{A})\le \|\mat{A}\|$ for every $\mat{A}\in\mathbb{R}^{n\times n}$ and every operator norm $\|\cdot\|$. $\rho(\mat{A})$ is the spectral radius of $\mat{A}$.
+\item Let $\mat{A}\in\mathbb{R}^{m\times n}$ have full column rank. Prove that $\|\mat{A}(\mat{A}^T\mat{A})^{-1}\|_2=1/\sigma_n$ where $\sigma_n$ is the $n^{\mbox{\tiny th}}$ singular value of $\mat{A}$. (Note that $\mat{A}^{-1}$ is not defined, so your proof cannot use $\mat{A}^{-1}$.)
+\item Prove the following: the iteration defined by $\vec{x}_{k+1}=\mat{B}\vec{x}_k$, where $\mat{B}\in\mathbb{R}^{n\times n}$ and $\vec{x}_k\in\mathbb{R}^n$,  converges to $\vec{0}$ for every initial condition $\vec{x}_0$ if and only if $\rho(\mat{B})<1$ where $\rho(\mat{B})$ is the spectral radius of $\mat{B}$.
+\item Prove that if $\mat{A}$ is skew symmetric, then $e^{\mat{A}}$ is orthogonal.
+\item Prove the following: If $\|\mat{F}\|<1$ where $\|\cdot\|$ is an operator norm, then 
+\[(\mat{I}-\mat{F})^{-1} - \mat{I} = \mat{F}(\mat{I}-\mat{F})^{-1}.\]
+\end{enumerate}
+Computing questions:
+\begin{enumerate}
+\item Can you write up homework solutions in \LaTeX and print them out?
+\item Can you use {\tt pip} or {\tt conda} (or {\tt mamba}) to set up and manage Python environments?
+\item Can you use a Jupyter notebook?
+\item Can you use {\tt numpy} or {\tt scipy} to perform numerical computations? (Or Matlab or Julia)
+\item Can you plot a mathematical function (e.g.\ using {\tt matplotlib.pyplot}), save it as a file, include it in a \LaTeX document, and print it out as pdf?
+\end{enumerate}
+ 
+
+\end{document}

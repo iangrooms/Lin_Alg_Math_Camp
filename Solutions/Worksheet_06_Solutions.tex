@@ -1,0 +1,222 @@
+  \documentclass[11pt,fleqn]{article}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{bm}
+ \usepackage[margin=1in]{geometry}
+ \usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{systeme}
+\usepackage{enumerate}
+\usepackage{nicefrac}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\lhead{{\bf LinAlg Math Camp}}
+\rhead{{\bf Worksheet \#6: Solutions}}
+\chead{}
+\cfoot{\thepage}
+
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\dd}[3]{\frac{\mathrm{d}^{#3}{#1}}{\mathrm{d}{#2}^{#3}}}
+
+% Actual document starts here 
+% ======================================================================================
+\begin{document}
+
+\begin{enumerate}
+\item Suppose that $\mathbf{A}$ is not diagonalizable. Construct a matrix $\mathbf{E}$ such that for sufficiently small $\epsilon>0$ the matrix $\mathbf{A} + \epsilon\mathbf{E}$ is diagonalizable.
+
+{\bf Solution:} Start from the Jordan decomposition of {\bf A}:
+\[\mathbf{A} = \mathbf{SJS}^{-1}.\]
+Let
+\[\mathbf{E} = \mathbf{SDS}^{-1}\]
+where $\mathbf{D}$ is a diagonal matrix whose entries are distinct.
+Note that
+\[\mathbf{A} + \epsilon\mathbf{E} = \mathbf{S}\left(\mathbf{J} + \epsilon \mathbf{D}\right)\mathbf{S}^{-1}.\]
+The eigenvalues of $\mathbf{A} + \epsilon\mathbf{E}$ are the same as the eigenvalues of the upper-triangular matrix $\mathbf{J} + \epsilon \mathbf{D}$, i.e. they are the diagonal entries of that matrix.
+For sufficiently small $\epsilon$ the diagonal entries of $\mathbf{J} + \epsilon \mathbf{D}$, and hence the eigenvalues of $\mathbf{A} + \epsilon\mathbf{E}$ will be distinct.
+Matrices with distinct eigenvalues are diagonalizable.
+
+\item Prove that if $\mat{A}$ is skew symmetric, then $e^{\mat{A}}$ is orthogonal.
+
+{\bf Solution:} Skew-symmetric matrices are normal and therefore have imaginary eigenvalues and orthonormal complex eigenvectors. The eigenvalue decomposition of {\bf A} is
+\[\mathbf{A} = \mathbf{U\Lambda U}^*.\]
+The matrix exponential is therefore
+\[e^{\mathbf{A}} = \mathbf{U}e^{\mathbf{\Lambda}} \mathbf{U}^*.\]
+We need to show that $e^{\mathbf{A}}(e^{\mathbf{A}})^T = \mathbf{I}$.
+Since both {\bf A} and $e^{\mathbf{A}}$ are both real, we can show that $\overline{e^{\mathbf{A}}}(e^{\mathbf{A}})^T = \mathbf{I}$, which simplifies the analysis.
+\[\overline{e^{\mathbf{A}}}(e^{\mathbf{A}})^T = \overline{\mathbf{U}}e^{-\mathbf{\Lambda}} \mathbf{U}^T\overline{\mathbf{U}}e^{\mathbf{\Lambda}} \mathbf{U}^T.\]
+Notice that $\mathbf{U}^T\overline{\mathbf{U}}$ is the Gram matrix formed from the eigenvectors of {\bf A} using the complex dot product, which is therefore {\bf I}.
+We therefore have
+\[\overline{e^{\mathbf{A}}}(e^{\mathbf{A}})^T = \overline{\mathbf{U}}e^{-\mathbf{\Lambda}}e^{\mathbf{\Lambda}} \mathbf{U}^T=\overline{\mathbf{U}}\mathbf{U}^T.\]
+Although the products of matrix exponentials don't generally follow the same rules as the products of scalar exponentials, in this case we are dealing with the exponential of diagonal matrices, and the rules for scalars apply.
+Now since $\mathbf{U}^T\overline{\mathbf{U}} = \mathbf{I}$ we must have $\mathbf{U}^T = \overline{\mathbf{U}}^{-1}$, so
+\[\overline{e^{\mathbf{A}}}(e^{\mathbf{A}})^T =\overline{\mathbf{U}}\mathbf{U}^T = \mathbf{I}.\]
+Since the square matrix $e^{\mathbf{A}}$ times its transpose equals the identity, the matrix $e^{\mathbf{A}}$ must be orthogonal.
+
+\item 
+\begin{itemize}
+	\item[(a)] Consider the linear, autonomous system of ODEs
+\[\frac{\mathrm{d}\vec{x}}{\mathrm{d}t} = \mathbf{A}\vec{x},\;\vec{x}(t=0) = \vec{b}.\] 
+	Write an explicit expression for a matrix $\mathbf{L}(t)$ such that
+\[\vec{x}(t) = \mathbf{L}(t)\vec{b}.\]
+
+     {\bf Solution:} \[\mathbf{L}(t) = e^{\mathbf{A}t}.\]
+     There are several ways to show that this is correct. Here are three examples:
+     \begin{itemize}
+     		\item[(i)] Taylor expand $\vec{x}(t)$ around $t=0$. Since we are expanding with respect to a scalar variable $t$, this is just a regular Calc-2 type Taylor expansion:
+     		\[\vec{x}(t) = \vec{b} + \left(\dd{\vec{x}}{t}{}\right)_{t=0}t + \frac{1}{2}\left(\dd{\vec{x}}{t}{2}\right)_{t=0}t^2 + \ldots + \frac{1}{n!}\left(\dd{\vec{x}}{t}{n}\right)_{t=0}t^n+\ldots\]
+     		The differential equation tells us that
+     		\[\left(\dd{\vec{x}}{t}{}\right)_{t=0} = \mathbf{A}\vec{x}(t=0)=\mathbf{A}\vec{b}.\]
+     		It also implies
+     		\[\dd{\vec{x}}{t}{n} = \mathbf{A}^n\vec{x}\]
+     		which we can plug in to our Taylor expansion
+     		\[\vec{x}(t) = \vec{b} + t\mathbf{A}\vec{b} + \frac{1}{2}t^2\mathbf{A}^2\vec{b} + \ldots + \frac{1}{n!}t^n\mathbf{A}^n\vec{b}+\ldots\]
+     		Factor out the $\vec{b}$ to obtain
+     		\[\vec{x}(t) = \left[\mathbf{I} + t\mathbf{A} + \frac{1}{2}t^2\mathbf{A}^2 + \ldots + \frac{1}{n!}t^n\mathbf{A}^n+\ldots\right]\vec{b}.\]
+     		Recognize this as the Taylor series for $e^{\mathbf{A}t}$, which converges everywhere, so
+     		\[\vec{x}(t) = e^{\mathbf{A}t}\vec{b}.\]
+     		\item[(ii)] Use the Jordan form $\mathbf{A} = \mathbf{SJS}^{-1}$ in a constructive way. Multiply the ODE by $\mathbf{S}^{-1}$ from the right and define $\vec{y} = \mathbf{S}^{-1}\vec{x}$ to obtain
+     		\[\dd{\vec{y}}{t}{} = \mat{J}\vec{y},\;\;\vec{y}(t=0) = \mat{S}^{-1}\vec{b}.\]
+     		If {\bf J} is diagonal then we just have $n$ independent scalar ODEs to solve, each of which has solution $y_i(t) = e^{\lambda_it}y_i(t=0)$. A little algebra shows that this is equivalent to $\vec{x}(t) = e^{\mathbf{A}t}\vec{b}$.
+     		
+     		If {\bf J} is not diagonal, then it is at least block diagonal. Each block corresponds to a system of $k$ ODEs that is independent of the other blocks and that has the form
+     		\begin{eqnarray*}
+     		\dd{y_1}{t}{} &=& \lambda y_1 + y_2 \\
+     		\vdots &=& \vdots\\
+     		\dd{y_{k-1}}{t}{} &=& \lambda y_{k-1} + y_k\\
+     		\dd{y_k}{t}{} &=& \lambda y_k
+     		\end{eqnarray*}
+     		The solution of the last equation is $y_k(t) = e^{\lambda t}y_k(t=0)$. Plug this in to the $k-1^{\mbox{\tiny st}}$ equation and solve to find $y_{k-1}(t) = e^{\lambda t}y_{k-1}(t=0) + te^{\lambda t}y_{k}(t=0).$ Continuing backwards we find
+     		\[\vec{y}(t) = \left[\begin{array}{cccc}e^{\lambda t}&te^{\lambda t}&\cdots&\frac{t^{k-1}}{(k-1)!}e^{\lambda t}\\&\ddots&&\vdots\\&&\ddots&te^{\lambda t}\\&&&e^{\lambda t}\end{array}\right]\vec{y}(t=0).\]
+     		This is the definition of $e^{\mathbf{J}(\lambda,k)t}$ for a single diagonal block. Putting it all back together yields  $\vec{x}(t) = e^{\mathbf{A}t}\vec{b}$.
+     		
+     		\item[(iii)] Use the Jordan form $\mathbf{A} = \mathbf{SJS}^{-1}$ and simply verify that the proposed solution $\vec{x} = e^{\mathbf{A}t}\vec{b}$ is actually a solution of the ODE. We have
+     		\[\vec{x}(t) = \mathbf{S}e^{\mathbf{J}t}\mathbf{S}^{-1}\vec{b}.\]
+     		At $t=0$ we have 
+     		\[\vec{x}(t=0) = \mathbf{S}e^{\mathbf{0}}\mathbf{S}^{-1}\vec{b} = \vec{b}\]
+     		so the proposed solution satisfies the initial condition. Does it satisfy the ODE?
+     		
+     		The RHS of the ODE is
+     		 \[\mathbf{A}\vec{x} = \mathbf{SJS}^{-1}\mathbf{S}e^{\mathbf{J}t}\mathbf{S}^{-1}\vec{b} = \mathbf{SJ}e^{\mathbf{J}t}\mathbf{S}^{-1}\vec{b}.\]
+     		 The LHS of the ODE is
+     		\[\dd{}{t}{}\vec{x}(t) = \mathbf{S}\left[\dd{}{t}{}e^{\mathbf{J}t}\right]\mathbf{S}^{-1}\vec{b}.\]
+     		The two sides are equal provided that $\dd{}{t}{}e^{\mathbf{J}t} = \mathbf{J}e^{\mat{J}t}$.
+     		Both sides are block diagonal, so we only need to consider whether this expression is true for a single diagonal block.
+     		
+     		Consider a single block on the diagonal of $e^{\mat{J}t}$, as given in (ii) just above, and take the derivative element by element:
+     		 \[\dd{}{t}{}\left[\begin{array}{cccc}e^{\lambda t}&te^{\lambda t}&\cdots&\frac{t^{k-1}}{(k-1)!}e^{\lambda t}\\&\ddots&&\vdots\\&&\ddots&te^{\lambda t}\\&&&e^{\lambda t}\end{array}\right] = \left[\begin{array}{cccc}\lambda e^{\lambda t}&\lambda te^{\lambda t}+e^{\lambda t}&\cdots&\lambda\frac{t^{k-1}}{(k-1)!}e^{\lambda t} + \frac{t^{k-2}}{(k-2)!}e^{\lambda t}\\&\ddots&&\vdots\\&&\ddots&\lambda te^{\lambda t}+e^{\lambda t}\\&&&\lambda e^{\lambda t}\end{array}\right]. \]
+     		 A little algebra shows that this is equal to $\mathbf{J}e^{\mat{J}t}$ for a single block {\bf J}.
+     		 
+     \end{itemize}
+	\item[(b)] Consider the problem of finding a direction for the vector $\vec{b}$ that will lead to the largest $\vec{x}$ (amplitude measured using the 2-norm) at a fixed time $T$. Explain how to find both the forcing vector $\vec{b}$ and the solution vector $\vec{x}$ using the SVD of $\mathbf{L}$.
+	
+	{\bf Solution:} This is a constrained optimization problem: Find $\vec{u}$ that optimizes $\|\mathbf{L}(t)\vec{b}\|_2 = \|\vec{b}\|_2\|\mathbf{L}(t)\vec{u}\|_2$ subject to the constraint $\|\vec{u}\|_2=1$.
+	For both the objective function and the constraint it's easier to use the square of the norm. The Euler-Lagrange equations are
+	\[\mathbf{L}^T(t)\mathbf{L}(t)\vec{u} = \lambda\vec{u},\;\;\vec{u}^T\vec{u}=1.\]
+	The matrix $\mathbf{L}^T(t)\mathbf{L}(t)$ is real and symmetric and has non-negative eigenvalues. The square roots of the positive eigenvalues are the singular values of $\mathbf{L}(t)$. We are interested in the eigenvector that corresponds to the largest eigenvalue, which is the leading (right) singular vector of $\mathbf{L}(t)$.
+	
+	Let the SVD of $\mathbf{L}(t)$ be
+	\[\mathbf{L}(t) = \mathbf{P\Sigma Q}^T\]
+	where time dependence is suppressed on the right hand side.
+	The optimal direction $\vec{u}$ for the forcing vector $\vec{b}$ is the first column of $\mathbf{Q}$, and the solution $\vec{x}$ at time $t$ is $\sigma_1\|\vec{b}\|_2$ times the first column of $\mathbf{P}$. If there isn't a gap in the singular spectrum, i.e. if $\sigma_1$ is not greater than $\sigma_2$ then there could be multiple directions that all give the same norm for the solution at time $t$. 
+	
+	\item[(c)] Suppose that $\mathbf{A}$ is symmetric. How is the optimal vector $\vec{b}$ from (b) related to the eigenvectors of $\mathbf{A}$?
+	
+	{\bf Solution:} If $\mathbf{A}$ is symmetric then $\mathbf{A} = \mathbf{Q\Lambda Q}^T$ is an orthogonal eigenvalue decomposition and $\mathbf{L}(t) = e^{\mathbf{A}t} = \mathbf{Q}e^{\mathbf{\Lambda} t}\mathbf{Q}^T$.
+	If we sort the eigenvalues of $\mathbf{A}$ so that the diagonal entries of $e^{\mathbf{\Lambda} t}$ are non-increasing, then this is an SVD of $\mathbf{L}(t)$. So in this case the optimal direction for $\vec{b}$ is the eigenvector corresponding to the eigenvalue $\lambda_1$ of $\mathbf{A}$ with largest real part (assuming $t>0$), and the solution is $\vec{x}(t) = e^{\lambda_1 t}\vec{b}$. Notice that in this case the optimal direction does not depend on $t$, whereas in the general case the optimal direction can depend on $t$.
+	
+%	\item[(d)] Consider the linear, autonomous system of ODEs
+%\[\frac{\mathrm{d}\vec{x}}{\mathrm{d}t} = \mathbf{A}\vec{x}+\vec{b},\;\vec{x}(t=0) = \vec{0}.\] 
+%	Write an explicit expression for a matrix $\mathbf{M}(t)$ such that
+%\[\vec{x}(t) = \mathbf{M}\vec{b}.\]
+%	\item[(e)] Suppose that $\mathbf{A}$ is normal. How is the optimal vector $\vec{b}$ from (d) related to the eigenvectors of $\mathbf{A}$?
+\end{itemize}
+\item Prove the following: If $\|\mat{F}\|<1$ where $\|\cdot\|$ is an operator norm, then 
+\[(\mat{I}-\mat{F})^{-1} - \mat{I} = \mat{F}(\mat{I}-\mat{F})^{-1}.\]
+
+{\bf Solution:} Consider the function
+\[f(x) = \frac{1}{1-x} -1 = \frac{1 - (1-x)}{1-x} = \frac{x}{1-x}.\]
+If we can apply this function to $\mathbf{F}$ then it proves the result.
+
+When can we apply the function to the matrix? If the matrix is diagonalizable then we just need to be able to apply the function to the eigenvalues.
+In this case the function is defined everywhere except $x=1$, so if $\mathbf{F}$ is diagonalizable and none of its eigenvalues is 1, then we can apply the function to the matrix, which produces the desired identity.
+
+If the matrix is not diagonalizable then we need to know that $f(x)$ and its derivatives (up to some finite order related to the length of the longest Jordan chain) can be applied to the eigenvalues of the matrix.
+In this case the function {\it and all its derivatives} are defined everywhere except $x=1$, so we can conclude that it's safe to apply the function to the matrix as long as none of its eigenvalues equals 1, regardless of whether the matrix is diagonalizable or not.
+
+The fact that $\|\mat{F}\|<1$ where $\|\cdot\|$ is an operator norm implies that the spectral radius of $\mathbf{F}$ is less than 1 (i.e. all the eigenvalues of $\mathbf{F}$ are within the unit circle in the complex plane).
+We can therefore apply the function $f(x) - 1$ to the matrix $\mathbf{F}$, and the identity $(1-x)^{-1}-1=x/(1-x)$ implies
+\[(\mat{I}-\mat{F})^{-1} - \mat{I} = \mat{F}(\mat{I}-\mat{F})^{-1}.\]
+
+\item Consider the matrix $\vec{u}\vec{v}^T$ where $\vec{u}$ and $\vec{v}$ are unit vectors and $\vec{u}\cdot\vec{v}\neq0$.
+	\begin{itemize}
+	\item[(a)] What are the eigenvalues and eigenvectors of this matrix?
+	
+	{\bf Solution:} We are looking for eigenpairs that satisfy $(\vec{u}\vec{v}^T)\vec{w} = (\vec{v}\cdot\vec{w})\vec{u} = \lambda\vec{w}$. Clearly we must have either $\vec{w}=\vec{u}$ and $\lambda = \vec{u}\cdot\vec{v}$, or $\lambda = \vec{v}\cdot\vec{w}=0$.	
+	\item[(b)] Is the matrix diagonalizable?
+	
+	{\bf Solution:} The set of vectors satisfying  $\vec{v}\cdot\vec{w}=0$ is the orthogonal complement of the span of $\vec{v}$, so the set of vectors satisfying  $\vec{v}\cdot\vec{w}=0$ has dimension $n-1$ where $n$ is the length of $\vec{v}$. The geometric multiplicity of the eigenvalue $\lambda = 0$ is therefore $n-1$. The other eigenvalue $\lambda=\vec{u}\cdot\vec{v}$ has geometric multiplicity one (it can't have more or less). The sum of the geometric multiplicities equals the dimension of the space, so the matrix is diagonalizable.
+
+	\item[(c)] Find an explicit expression for a matrix $\mathbf{X}$ such that $\mathbf{X}^2 = \mathbf{I} + \vec{u}\vec{v}^T$.
+
+	{\bf Solution:} The eigenvectors and eigenvalues of $\mathbf{X}^2$ are
+		\begin{itemize}
+		\item $\lambda_1 = 1 + \vec{u}\cdot\vec{v}$ with eigenvector $\vec{u}$, and
+		\item $\lambda_2 = 1$ with eigenvectors orthogonal to $\vec{v}$.
+		\end{itemize}
+		Since the matrix is diagonalizable we can take the square root by just applying the square root to the eigenvalues and leaving the eigenvectors unchanged.
+	Adding the identity does not change eigenvectors, and multiplying by a constant does not change eigenvectors, so consider 
+	\[\mathbf{X} = \mathbf{I} + \beta \vec{u}\vec{v}^T.\]
+	For any $\beta\neq 0$ we have
+		\begin{itemize}
+		\item $\mu_1 = 1 + \beta\vec{u}\cdot\vec{v}$ with eigenvector $\vec{u}$, and
+		\item $\mu_2 = 1$ with eigenvectors orthogonal to $\vec{v}$.
+		\end{itemize}
+		The eigenvalue $\mu_2=\sqrt{\lambda_2} = 1$ is already correct, so we just need to choose $\beta$ so that $\mu_1 = \sqrt{\lambda_1}$, i.e.
+		\[1+\beta \vec{u}\cdot\vec{v} = \sqrt{1 + \vec{u}\cdot\vec{v}}.\]
+		The solution is
+		\[\beta = \frac{-1+\sqrt{1+\vec{u}\cdot\vec{v}}}{\vec{u}\cdot\vec{v}} = \frac{1}{1+\sqrt{1+\vec{u}\cdot\vec{v}}}.\]
+	\item[(d)] Find an explicit expression for $(\mathbf{I} + \vec{u}\vec{v}^T)^{-1}$ assuming $\vec{u}\cdot\vec{v}\neq -1$.
+	
+	{\bf Solution:} One could use the Sherman-Morrison identity from Worksheet \#1. Alternatively we can pursue the same strategy as in part (c), i.e. look for a solution in the form
+		\[\mathbf{X} = \mathbf{I} + \gamma \vec{u}\vec{v}^T.\]
+	For any $\gamma\neq 0$ we have
+		\begin{itemize}
+		\item $\mu_1 = 1 + \gamma\vec{u}\cdot\vec{v}$ with eigenvector $\vec{u}$, and
+		\item $\mu_2 = 1$ with eigenvectors orthogonal to $\vec{v}$.
+		\end{itemize}
+		The eigenvalue $\mu_2=\lambda_2^{-1} = 1$ is already correct, so we just need to choose $\gamma$ so that $\mu_1 = \lambda_1^{-1}$, i.e.
+		\[1+\gamma \vec{u}\cdot\vec{v} = \frac{1}{1 + \vec{u}\cdot\vec{v}}.\]
+		The solution is
+		\[\gamma = \frac{-1+(1+\vec{u}\cdot\vec{v})^{-1}}{\vec{u}\cdot\vec{v}}=-\frac{1}{1+\vec{u}\cdot\vec{v}}.\]
+		This is well-defined with the assumption $\vec{u}\cdot\vec{v}\neq-1$.
+	\end{itemize}
+
+\item Prove the following: the iteration defined by $\vec{x}_{k+1}=\mat{B}\vec{x}_k$, where $\mat{B}\in\mathbb{R}^{n\times n}$ and $\vec{x}_k\in\mathbb{R}^n$,  converges to $\vec{0}$ for every initial condition $\vec{x}_0$ if and only if $\rho(\mat{B})<1$ where $\rho(\mat{B})$ is the spectral radius of $\mat{B}$.
+
+{\bf Solution:} Write
+\[\vec{x}_k = \mathbf{B}^k\vec{x}_0.\]
+ If $\mathbf{B}$ is diagonalizable the proof is easy:
+ \[\mathbf{B}^k = \mathbf{S\Lambda}^k\mathbf{S}^{-1}.\]
+ If all the diagonal elements of $\mathbf{\Lambda}$ are inside the unit circle in the complex plane then $\mathbf{\Lambda}^k\to\mathbf{0}$ as $k\to\infty$.
+ Conversely, if any diagonal element of $\mathbf{\Lambda}$ is not inside the unit circle in the complex plane then $\mathbf{\Lambda}^k$ does not converge to 0, and there is a $\vec{x}_0$ such that $\vec{x}_k$ does not converge to $\vec{0}$.
+ 
+ If $\mathbf{B}$ is not diagonalizable then we need the Jordan decomposition
+ \[\mathbf{B}^k = \mathbf{SJ}^k\mathbf{S}^{-1}.\]
+ Since $\mathbf{J}$ is block diagonal, we simply need to consider what happens to a single Jordan block when we raise it to the $k^{th}$ power.
+ 
+ From the lecture notes we have
+ So for $k\ge m-1$
+
+$$(\lambda\mathbf{I} + \mathbf{N}_m)^k = \lambda^k\mathbf{I} + \left(\begin{array}{c}k\\1\end{array}\right)\lambda^{k-1}\mathbf{N}_m + \cdots + \left(\begin{array}{c}k\\m-1\end{array}\right)\lambda^{k-m+1}\mathbf{N}_m^{m-1}$$
+
+for a Jordan block of size $m\times m$.
+For fixed $m$ a $k\to\infty$ the binomial coefficients grow slower than exponentially.
+If $|\lambda|<1$ then the exponential decay wins out and the whole block $\to\mathbf{0}$ as $k\to\infty$.
+But if $|\lambda|\ge 1$ then the block either (i) doesn't decay ($|\lambda|=1$ and $m=1$) or else (ii) the block grows as $k\to\infty$.
+
+\end{enumerate}
+ 
+
+\end{document}
