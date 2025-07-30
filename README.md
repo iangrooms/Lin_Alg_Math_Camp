@@ -4,6 +4,8 @@ This repository contains materials developed by Ian Grooms for the math camp in 
 The material is drawn in part from the second edition of Applied Linear Algebra by Olver & Shakiban.
 Other useful references include Matrix Analysis and Applied Linear Algebra by Carl Meyer, and Matrix Analysis by Horn & Johnson.
 
+Instructions for getting up and running with the Anaconda Python manager and Jupyter notebooks can be found [here](https://www.colorado.edu/amath/mathcamp).
+
 ## Notebooks
 - Lecture 1:
 	- Vectors, Matrices, Numpy
