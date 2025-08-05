@@ -5,6 +5,8 @@ The material is drawn in part from the second edition of Applied Linear Algebra 
 Other useful references include Matrix Analysis and Applied Linear Algebra by Carl Meyer, and Matrix Analysis by Horn & Johnson.
 
 Instructions for getting up and running with the Anaconda Python manager and Jupyter notebooks can be found [here](https://www.colorado.edu/amath/mathcamp).
+Classes and research groups in the department use a wide range of tools including Python, Julia, R, and Matlab.
+Excellent tutorial material on computing with Python is available [here](https://foundations.projectpythia.org/), with a slant towards my own Earth-science research interests.
 
 ## Notebooks
 - Lecture 1:
