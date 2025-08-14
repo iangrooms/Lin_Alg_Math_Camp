@@ -34,16 +34,16 @@ Note
 \[\mathbf{AB} = \mathbf{S}^{-1}\mathbf{D}_A\mathbf{S}\mathbf{S}^{-1}\mathbf{D}_B\mathbf{S} = \mathbf{S}^{-1}\mathbf{D}_A\mathbf{D}_B\mathbf{S}=\mathbf{S}^{-1}\mathbf{D}_B\mathbf{D}_A\mathbf{S}=\mathbf{S}^{-1}\mathbf{D}_B\mathbf{S}\mathbf{S}^{-1}\mathbf{D}_A\mathbf{S} = \mathbf{BA}.\]
 
 \item Suppose that $\mathbf{A}$ is symmetric and positive definite, while $\mathbf{B}$ is symmetric. Prove that there is a real invertible matrix $\mathbf{S}$ such that
-\[\mathbf{A} + \mathbf{B} = \mathbf{S}\left(\mathbf{I} + \mathbf{D}\right)\mathbf{S}^T\]
-where $\mathbf{D}$ is diagonal.
+\[\mathbf{A} + t\mathbf{B} = \mathbf{S}\left(\mathbf{I} + t\mathbf{D}\right)\mathbf{S}^T\]
+where $\mathbf{D}$ is diagonal, for every $t$ (i.e.\ none of the matrices in the above expression depends on $t$).
 
 {\bf Solution:} Since {\bf A} is SPD it has a Cholesky factorization $\mathbf{A} = \mathbf{LL}^T$.
 Factor out the Cholesky factors from the sum:
-\[\mathbf{A} + \mathbf{B} = \mathbf{L}\left(\mathbf{I} + \mathbf{L}^{-1}\mathbf{BL}^{-T}\right)\mathbf{L}^T.\]
+\[\mathbf{A} + t\mathbf{B} = \mathbf{L}\left(\mathbf{I} + t\mathbf{L}^{-1}\mathbf{BL}^{-T}\right)\mathbf{L}^T.\]
 Notice that the matrix $\mathbf{L}^{-1}\mathbf{BL}^{-T}$ is real and symmetric, so it has a real orthogonal eigenvalue decomposition
 \[\mathbf{L}^{-1}\mathbf{BL}^{-T} = \mathbf{QDQ}^T.\]
 Insert this and simplify
-\[\mathbf{L}\left(\mathbf{I} +\mathbf{QDQ}^T\right)\mathbf{L}^T = \mathbf{L}\left(\mathbf{QQ}^T +\mathbf{QDQ}^T\right)\mathbf{L}^T=\mathbf{LQ}\left(\mathbf{I} +\mathbf{D}\right)(\mathbf{LQ})^T.\]
+\[\mathbf{L}\left(\mathbf{I} +t\mathbf{QDQ}^T\right)\mathbf{L}^T = \mathbf{L}\left(\mathbf{QQ}^T +t\mathbf{QDQ}^T\right)\mathbf{L}^T=\mathbf{LQ}\left(\mathbf{I} +t\mathbf{D}\right)(\mathbf{LQ})^T.\]
 The matrix $\mathbf{S} = \mathbf{LQ}$ is real and invertible.
 
 \item Suppose that $\mathbf{A}$ and $\mathbf{B}$ are both $n\times n$. Prove that $\mathbf{AB}$ and $\mathbf{BA}$ have the same eigenvalues. % 8.2.23

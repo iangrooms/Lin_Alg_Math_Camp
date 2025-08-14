@@ -172,16 +172,16 @@ If $1+\vec{v}^T\mathbf{A}^{-1}\vec{u}=0$ then the vector $\mathbf{A}^{-1}\vec{u}
 
 Comment: This is useful in a context where you can easily solve linear systems with coefficient matrix {\bf A}, e.g. because you have an LU factorization of {\bf A}. The Sherman-Morrison identity allows you to find the solution of linear systems whose coefficient matrix is a rank-one perturbation of {\bf A} without having to row reduce the new coefficient matrix. Using the formula in part (b) only requires solving linear systems with coefficient matrix {\bf A} (and also taking some dot products, which is easy).
 
-\item Prove that if $\vec{v}_1,\ldots,\vec{v}_r$ are a basis for the corange of $\mathbf{A}$, then $\mathbf{A}\vec{v}_1,\ldots,\mathbf{A}\vec{v}_r$ are a basis for the range of $\mathbf{A}$.
-
-{\bf Solution:} The dimension of the range equals that of the corange, and the vectors $\mathbf{A}\vec{v}_1,\ldots,\mathbf{A}\vec{v}_r$ are all in the range by construction. All we need to prove is that they are linearly independent. So we ask whether there are coefficients $c_i$, not all zero, such that
-\[c_1 \mathbf{A}\vec{v}_1 + \cdots+c_r\mathbf{A}\vec{v}_r = \vec{0}.\]
-Simplifying,
-\[\mathbf{A}(c_1 \vec{v}_1 + \cdots+c_r\vec{v}_r) = \vec{0}.\]
-The above equation is true when either $c_1 \vec{v}_1 + \cdots+c_r\vec{v}_r=\vec{0}$, or $c_1 \vec{v}_1 + \cdots+c_r\vec{v}_r$ is in the null space of $\mathbf{A}$.
-The first condition is not possible because the vectors are independent, and the second is not possible because the vectors are all in the corange.
-(The corange and null space intersect only at $\vec{0}$.)
-So the only solution is for all the coefficients $c_i$ to be zero, which means the vectors are independent, which means they are a basis.
+%\item Prove that if $\vec{v}_1,\ldots,\vec{v}_r$ are a basis for the corange of $\mathbf{A}$, then $\mathbf{A}\vec{v}_1,\ldots,\mathbf{A}\vec{v}_r$ are a basis for the range of $\mathbf{A}$.
+%
+%{\bf Solution:} The dimension of the range equals that of the corange, and the vectors $\mathbf{A}\vec{v}_1,\ldots,\mathbf{A}\vec{v}_r$ are all in the range by construction. All we need to prove is that they are linearly independent. So we ask whether there are coefficients $c_i$, not all zero, such that
+%\[c_1 \mathbf{A}\vec{v}_1 + \cdots+c_r\mathbf{A}\vec{v}_r = \vec{0}.\]
+%Simplifying,
+%\[\mathbf{A}(c_1 \vec{v}_1 + \cdots+c_r\vec{v}_r) = \vec{0}.\]
+%The above equation is true when either $c_1 \vec{v}_1 + \cdots+c_r\vec{v}_r=\vec{0}$, or $c_1 \vec{v}_1 + \cdots+c_r\vec{v}_r$ is in the null space of $\mathbf{A}$.
+%The first condition is not possible because the vectors are independent, and the second is not possible because the vectors are all in the corange.
+%(The corange and null space intersect only at $\vec{0}$.)
+%So the only solution is for all the coefficients $c_i$ to be zero, which means the vectors are independent, which means they are a basis.
 \end{enumerate}
 
 \end{document}
