@@ -193,7 +193,7 @@ We can therefore apply the function $f(x) - 1$ to the matrix $\mathbf{F}$, and t
 		This is well-defined with the assumption $\vec{u}\cdot\vec{v}\neq-1$.
 	\end{itemize}
 
-\item Prove the following: the iteration defined by $\vec{x}_{k+1}=\mat{B}\vec{x}_k$, where $\mat{B}\in\mathbb{R}^{n\times n}$ and $\vec{x}_k\in\mathbb{R}^n$,  converges to $\vec{0}$ for every initial condition $\vec{x}_0$ if and only if $\rho(\mat{B})<1$ where $\rho(\mat{B})$ is the spectral radius of $\mat{B}$.
+\item Prove the following: the iteration defined by $\vec{x}_{k+1}=\mathbf{B}\vec{x}_k$, where $\mathbf{B}\in\mathbb{R}^{n\times n}$ and $\vec{x}_k\in\mathbb{R}^n$,  converges to $\vec{0}$ for every initial condition $\vec{x}_0$ if and only if $\rho(\mathbf{B})<1$ where $\rho(\mathbf{B})$ is the spectral radius of $\mathbf{B}$.
 
 {\bf Solution:} Write
 \[\vec{x}_k = \mathbf{B}^k\vec{x}_0.\]
@@ -215,6 +215,11 @@ for a Jordan block of size $m\times m$.
 For fixed $m$ a $k\to\infty$ the binomial coefficients grow slower than exponentially.
 If $|\lambda|<1$ then the exponential decay wins out and the whole block $\to\mathbf{0}$ as $k\to\infty$.
 But if $|\lambda|\ge 1$ then the block either (i) doesn't decay ($|\lambda|=1$ and $m=1$) or else (ii) the block grows as $k\to\infty$.
+
+Alternatively, you can use the fact that if $\rho(\mathbf{B})<1$ then there is an operator norm $\|\cdot\|$ such that $\rho(\mathbf{B})<\|\mathbf{B}\|<1$.
+For this operator norm we have
+\[\|\vec{x}_k\| = \|\mathbf{B}^k\vec{x}_0\|\le \|\mathbf{B}^k\|\|\vec{x}_0\|\le \|\mathbf{B}\|^k\|\vec{x}_0\|\to0\text{ as }k\to\infty.\]
+Since we're dealing with a finite-dimensional space, the fact that the norm goes to zero implies that the vector goes to zero (in every norm).
 
 \end{enumerate}
  
